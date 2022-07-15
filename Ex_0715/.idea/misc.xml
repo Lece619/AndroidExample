@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/web14_android_kjh/work/Ex_0715/app/src/main/res/drawable/alarm_selector.xml" value="0.143" />
+        <entry key="..\:/web14_android_kjh/work/Ex_0715/app/src/main/res/drawable/search_selector.xml" value="0.143" />
+        <entry key="..\:/web14_android_kjh/work/Ex_0715/app/src/main/res/layout/activity_effect.xml" value="0.1685185185185185" />
         <entry key="..\:/web14_android_kjh/work/Ex_0715/app/src/main/res/layout/activity_visible.xml" value="0.3183876811594203" />
       </map>
     </option>
