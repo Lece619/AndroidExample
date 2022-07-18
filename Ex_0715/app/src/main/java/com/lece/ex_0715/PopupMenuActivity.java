@@ -22,7 +22,7 @@ public class PopupMenuActivity extends AppCompatActivity {
         btn_show = findViewById(R.id.btn_show);
         anchor = findViewById(R.id.anchor);
         createPopup();
-
+        
         btn_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +31,7 @@ public class PopupMenuActivity extends AppCompatActivity {
         });
     }
 
-
+    //메뉴 만들어주기
     private void createPopup(){
         popup = new PopupMenu(PopupMenuActivity.this,anchor);
         getMenuInflater().inflate(R.menu.my_menu2,popup.getMenu());
