@@ -22,7 +22,7 @@ public class PopupMenuActivity extends AppCompatActivity {
         btn_show = findViewById(R.id.btn_show);
         anchor = findViewById(R.id.anchor);
         createPopup();
-        
+
         btn_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
