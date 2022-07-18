@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lece.ex_0718">
 
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ex_0718"
         tools:targetApi="31">
+        <activity
+            android:name=".IntentSubActivity"
+            android:exported="false" />
         <activity
             android:name=".AlertDialogActivity"
             android:exported="false" />

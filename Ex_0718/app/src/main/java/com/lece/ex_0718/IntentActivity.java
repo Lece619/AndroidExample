@@ -83,6 +83,11 @@ public class IntentActivity extends AppCompatActivity {
                     break;
                 //다른 액티비티로 이동
                 case R.id.btn_next:
+                    intent = new Intent(IntentActivity.this,IntentSubActivity.class);
+                    //중복된 페이지를 걸러내는 플래그 추가
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                            Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
                     break;
             }
 
