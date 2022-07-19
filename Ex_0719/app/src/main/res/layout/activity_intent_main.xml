@@ -36,7 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="1980-01-01"
-            android:id="@+id/edit_b_day"/>
+            android:id="@+id/edit_b_day"
+            android:enabled="false"
+            android:textColor="#000"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,5 +48,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="send"/>
+        android:text="send"
+        android:id="@+id/btn_send"/>
 </LinearLayout>
