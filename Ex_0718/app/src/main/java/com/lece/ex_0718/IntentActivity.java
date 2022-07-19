@@ -87,6 +87,7 @@ public class IntentActivity extends AppCompatActivity {
                     //중복된 페이지를 걸러내는 플래그 추가
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                             Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
                     startActivity(intent);
                     break;
             }
