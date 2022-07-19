@@ -1,11 +1,14 @@
 package com.lece.ex_0719;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -81,6 +84,24 @@ public class IntentMainActivity extends AppCompatActivity {
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
             String result = String.format("%d-%02d-%02d",year, month+1, day);
             edit_b_day.setText(result);
+        }
+    };
+
+    int clickCount = 0;
+    @Override
+    public void onBackPressed() {
+        handler.sendEmptyMessageDelayed(0,2000);
+        clickCount++;
+        if(clickCount==2){
+            finish();
+        }
+        Toast.makeText(this, "한번더 눌러야 종료됩니다.", Toast.LENGTH_SHORT).show();
+    }
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            clickCount=0;
         }
     };
 }

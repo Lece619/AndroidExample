@@ -1,10 +1,14 @@
 package com.lece.ex_0719;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class IntentSubActivity extends AppCompatActivity {
 
@@ -25,6 +29,7 @@ public class IntentSubActivity extends AppCompatActivity {
         txt_age.append(intent.getStringExtra("age"));
         txt_tel.append(intent.getStringExtra("tel"));
         txt_birth.append(intent.getStringExtra("birth"));
-
     }
+
+
 }

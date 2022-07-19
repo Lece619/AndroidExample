@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Ex_0719"
         tools:targetApi="31">
         <activity
+            android:name=".IntentMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".IntentSubActivity"
             android:exported="false" />
         <activity
@@ -23,7 +26,7 @@
             android:name=".HandlerActivity"
             android:exported="false" />
         <activity
-            android:name=".IntentMainActivity"
+            android:name=".BackFinishActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
