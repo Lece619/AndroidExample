@@ -1,10 +1,14 @@
 package com.lece.parser;
 
 
+import android.util.JsonReader;
+
 import com.lece.ex_naverapi.NaverActivity;
 import com.lece.vo.BookVO;
 import com.lece.vo.NaverProperty;
 
+import org.json.JSONArray;
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.net.HttpURLConnection;
@@ -34,6 +38,41 @@ public class Parser {
 
             //URL을 수행하여 받은 자원들을 parsing 해야한다.
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = factory.newPullParser();
+
+            //connection 객체가 접속후 가지게 된 내용을 parser가 스트림으로 읽어온다
+            parser.setInput(httpURLConnection.getInputStream(),null);
+
+            //파서 객체를 통해 각 요소별 접근을 하게되고, 태그(요소) 내부의 값들을 가져온다.
+            //while문을 돌리면서 더이상 읽어올 책이 없을 때 가지 모든 정보를 다 가져올 것이다.
+            int parserEvent = parser.getEventType();
+            //문서가 끝이 나지 않을때 까지
+            while(parserEvent != XmlPullParser.END_DOCUMENT){
+                //서버쪽 xml 만나서 끝나면 종료
+
+                //시작태그의 이름을 가져와 vo 에 담을 수 있는 정보라면  vo에 추가
+                if(parserEvent == XmlPullParser.START_TAG){
+                    String tagName = parser.getName();
+
+                    if(tagName.equals("title")){
+                        vo = new BookVO();
+                        String title = parser.nextText();
+                        vo.setB_title(title);
+                    } else if(tagName.equals("image")){
+                        String img = parser.nextText();
+                        vo.setB_image(img);
+                    } else if(tagName.equals("author")){
+                        String author = parser.nextText();
+                        vo.setB_author(author);
+                    } else if(tagName.equals("price")){
+                        String price = parser.nextText();
+                        vo.setB_price(Integer.parseInt(price));
+
+                        bookList.add(vo);
+                    }
+                }
+                parserEvent = parser.next();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

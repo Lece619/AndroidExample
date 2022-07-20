@@ -3,13 +3,21 @@ package com.lece.ex_naverapi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.lece.parser.ParserJSON;
+
+import java.net.MalformedURLException;
 
 public class NaverActivity extends AppCompatActivity {
 
     public static EditText search;
     Button search_btn;
+    TextView text_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +26,21 @@ public class NaverActivity extends AppCompatActivity {
 
         search = findViewById(R.id.search);
         search_btn = findViewById(R.id.search_btn);
+        text_result = findViewById(R.id.text_result);
+
+        ParserJSON parserJSON = new ParserJSON();
+
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] result = new String[1];
+                new Thread() {
+                    public void run() {
+                       result[0] = parserJSON.connectNaver();
+                    }
+                }.start();
+                text_result.setText(result[0]);
+            }
+        });
     }
 }

@@ -29,6 +29,14 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/myListView" />
+        android:id="@+id/myListView"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="임시결과 출력장소"
+        android:id="@+id/text_result"/>
 
 </LinearLayout>
