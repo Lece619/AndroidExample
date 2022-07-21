@@ -33,7 +33,7 @@ public class NaverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_naver);
-
+        
         search = findViewById(R.id.search);
         search_btn = findViewById(R.id.search_btn);
         text_result = findViewById(R.id.text_result);

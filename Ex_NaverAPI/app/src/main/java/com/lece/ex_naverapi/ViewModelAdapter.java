@@ -71,11 +71,10 @@ public class ViewModelAdapter extends ArrayAdapter<BookVO> {
         imageAsync.execute(bookVO.getB_image());
 
 
-
         return convertView;
     }
 
-    class ImageAsync extends AsyncTask<String, Void, Bitmap>{
+    class ImageAsync extends AsyncTask<String, Void, Bitmap> {
 
         @Override
         protected Bitmap doInBackground(String... strings) {
@@ -86,6 +85,10 @@ public class ViewModelAdapter extends ArrayAdapter<BookVO> {
                 bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+
+            if (bitmap == null) {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.no_image);
             }
 
             return bitmap;
