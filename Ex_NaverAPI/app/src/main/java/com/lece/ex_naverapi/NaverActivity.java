@@ -3,6 +3,7 @@ package com.lece.ex_naverapi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ public class NaverActivity extends AppCompatActivity {
     public static EditText search;
     Button search_btn;
     TextView text_result;
+    static String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +32,29 @@ public class NaverActivity extends AppCompatActivity {
 
         ParserJSON parserJSON = new ParserJSON();
 
+        /* JSON Method
+
         search_btn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                final String[] result = new String[1];
-                new Thread() {
+                Thread thread = new Thread(){
+                    @Override
                     public void run() {
-                       result[0] = parserJSON.connectNaver();
+                        result = parserJSON.connectNaver();
                     }
-                }.start();
-                text_result.setText(result[0]);
+                };
+                thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                text_result.setText(result);
             }
         });
+
+        */
     }
+
 }

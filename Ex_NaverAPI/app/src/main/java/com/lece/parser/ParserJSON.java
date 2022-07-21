@@ -5,6 +5,9 @@ import com.lece.ex_naverapi.NaverActivity;
 import com.lece.vo.BookVO;
 import com.lece.vo.NaverProperty;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -34,23 +37,39 @@ public class ParserJSON {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
             //발급 받은 ID 와 Secret을 서버로 전달
+            httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("X-Naver-Client-Id", NaverProperty.id);
             httpURLConnection.setRequestProperty("X-Naver-Client-Secret",NaverProperty.key);
-            httpURLConnection.setRequestProperty("Content-type", "application/json");
+            //httpURLConnection.setRequestProperty("Content-type", "application/json");
             //URL을 수행하여 받은 자원들을 parsing 해야한다.
 
             //url에 정보를 불러와서 저장
             StringBuilder sb = new StringBuilder();
             BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "UTF-8"));
-            while(br.ready()){
-                sb.append(br.readLine());
+            String inputLine;
+            while((inputLine=br.readLine()) != null){
+                sb.append(inputLine);
             }
             result = sb.toString();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        parsingJSON(result);
         return result;
     }
 
+    private void parsingJSON(String result) {
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            JSONArray jsonArray = jsonObject.getJSONArray("items");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                 JSONObject bookObject = jsonArray.getJSONObject(i);
+                System.out.println("bookObject.get(\"title\") = " + bookObject.get("title"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
