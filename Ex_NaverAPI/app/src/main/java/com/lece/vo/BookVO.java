@@ -5,7 +5,7 @@ public class BookVO {
     //제목 저자 가격 이미지( url )
     private String b_title;
     private String b_author;
-    private Integer b_price;
+    private int b_price;
     private String b_image;
 
     public String getB_title() {
@@ -24,11 +24,11 @@ public class BookVO {
         this.b_author = b_author;
     }
 
-    public Integer getB_price() {
+    public int getB_price() {
         return b_price;
     }
 
-    public void setB_price(Integer b_price) {
+    public void setB_price(int b_price) {
         this.b_price = b_price;
     }
 
