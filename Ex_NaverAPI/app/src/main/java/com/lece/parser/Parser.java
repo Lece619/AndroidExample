@@ -80,11 +80,8 @@ public class Parser {
                         vo.setB_author(author);
                     } else if (tagName.equals("price")) {
                         String price = parser.nextText();
-                        int comma = price.indexOf('.');
-                        if(comma!=-1) {
-                            price = price.substring(0, price.indexOf('.'));
-                        }
-                        vo.setB_price(Integer.parseInt(price));
+
+                        vo.setB_price(price);
 
                         bookList.add(vo);
                     }

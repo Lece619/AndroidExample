@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -71,6 +73,22 @@ public class NaverActivity extends AppCompatActivity {
             }
         });
         */
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
+                switch (i){
+                    case EditorInfo
+                            .IME_ACTION_SEARCH :
+                        //search_btn 버튼 강제로 클릭
+                        search_btn.performClick();
+                        break;
+                }
+
+                return true;
+            }
+        });
+
     }//OnCreate()
 
     class NaverAsync extends AsyncTask<String, Void, ArrayList<BookVO>>{
@@ -85,8 +103,10 @@ public class NaverActivity extends AppCompatActivity {
             //최종 작업결과를 받는 메서드 최종 return 값을 bookVOS가 받음
 
             //ListView를 그리기 위해 Adapter 클래스에게 넘겨줘야 한다.
-            viewModelAdapter = new ViewModelAdapter(NaverActivity.this, R.layout.book_item, bookVOS);
+            viewModelAdapter = new ViewModelAdapter(NaverActivity.this, R.layout.book_item, bookVOS, myListView);
             myListView.setAdapter(viewModelAdapter);
+
+
 
             Log.i("MY", "" + bookVOS.size());
         }

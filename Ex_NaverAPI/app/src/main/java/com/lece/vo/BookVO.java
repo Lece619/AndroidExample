@@ -1,12 +1,18 @@
 package com.lece.vo;
 
-public class BookVO {
+import android.graphics.Bitmap;
+
+import java.io.Serializable;
+
+
+public class BookVO implements Serializable{
     //네이버 도서 서버에서 얻어올 정보를 저장할 변수
     //제목 저자 가격 이미지( url )
     private String b_title;
     private String b_author;
-    private int b_price;
+    private String b_price;
     private String b_image;
+
 
     public String getB_title() {
         return b_title;
@@ -24,11 +30,11 @@ public class BookVO {
         this.b_author = b_author;
     }
 
-    public int getB_price() {
+    public String  getB_price() {
         return b_price;
     }
 
-    public void setB_price(int b_price) {
+    public void setB_price(String b_price) {
         this.b_price = b_price;
     }
 

@@ -2,6 +2,7 @@ package com.lece.ex_naverapi;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -10,10 +11,14 @@ import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+
+import androidx.annotation.NonNull;
 
 import com.lece.vo.BookVO;
 
@@ -40,12 +45,38 @@ public class ViewModelAdapter extends ArrayAdapter<BookVO> {
     ImageView book_image;
     ImageAsync imageAsync;
 
-    public ViewModelAdapter(Context context, int resource, ArrayList<BookVO> list) {
+    public ViewModelAdapter(Context context, int resource, ArrayList<BookVO> list, ListView myListView) {
         super(context, resource, list);
         this.context = context;
         this.resource = resource;
         this.list = list;
+
+        myListView.setOnItemClickListener(click);
     }
+
+
+    AdapterView.OnItemClickListener click= new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            BookVO bookVO2 = list.get(i);
+            String title = bookVO2.getB_title();
+            String author = bookVO2.getB_author();
+            String price = bookVO2.getB_price();
+            String image = bookVO2.getB_image();
+            
+            //화면 전환을 위한 Intent 준비
+            Intent intent = new Intent(context, SubActivity.class);
+            intent.putExtra("title",title);
+            intent.putExtra("author",author);
+            intent.putExtra("price",price);
+            intent.putExtra("image",image);
+            context.startActivity(intent);
+
+        }
+    };
+
+    //리스트 뷰의 클릭을 감지하는 감지자
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -59,7 +90,7 @@ public class ViewModelAdapter extends ArrayAdapter<BookVO> {
         //book_item.xml 파일을 view 형태로 변경해준다.
         convertView = layoutInflater.inflate(resource, null);
 
-        BookVO bookVO = list.get(position);
+        bookVO = list.get(position);
         book_title = convertView.findViewById(R.id.book_title);
         book_author = convertView.findViewById(R.id.book_author);
         book_price = convertView.findViewById(R.id.book_price);
@@ -82,6 +113,7 @@ public class ViewModelAdapter extends ArrayAdapter<BookVO> {
             try {
                 String img_url = strings[0];
                 URL url = new URL(img_url);
+
                 bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             } catch (IOException e) {
                 e.printStackTrace();
