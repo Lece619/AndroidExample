@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrawerActivity"
+    android:id="@+id/drawer_layout">
+
+    <!--서랍이 열리기 전에 보여줄 메인 레이아웃 작성-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Main화면"
+            android:textSize="30dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="서랍열기"
+            android:id="@+id/btn_open" />
+
+    </LinearLayout>
+    <!--서랍이 열리기 전에 보여줄 메인 레이아웃 작성-->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer"
+        android:orientation="vertical"
+        android:background="#8ac"
+        android:layout_gravity="start">
+<!--        android:layout_gravity="end"> 오른쪽에 넣기-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="나는 사람입니다"
+            android:textSize="30dp"/>
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/rabbit2"
+            android:layout_gravity="center" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서랍 닫기"
+            android:id="@+id/btn_close" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer2"
+        android:orientation="vertical"
+        android:background="#8ac"
+        android:layout_gravity="end">
+        <!--        android:layout_gravity="end"> 오른쪽에 넣기-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="나는 사람입니다"
+            android:textSize="30dp"/>
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/rabbit2"
+            android:layout_gravity="center" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서랍 닫기"
+            android:id="@id/btn_close" />
+
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

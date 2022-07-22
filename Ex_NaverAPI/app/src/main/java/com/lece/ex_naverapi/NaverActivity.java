@@ -30,6 +30,7 @@ public class NaverActivity extends AppCompatActivity {
     ListView myListView;
     Parser parser;
     ViewModelAdapter viewModelAdapter;
+    LinearLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,8 @@ public class NaverActivity extends AppCompatActivity {
         
         search = findViewById(R.id.search);
         search_btn = findViewById(R.id.search_btn);
-        text_result = findViewById(R.id.text_result);
         myListView = findViewById(R.id.myListView);
+        loading = findViewById(R.id.loading);
         parser = new Parser();
 
         search_btn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +48,7 @@ public class NaverActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //서버에 연결
                 new NaverAsync().execute("홍","길","동");
+                loading.setVisibility(View.VISIBLE);
             }
         });
 
@@ -106,11 +108,7 @@ public class NaverActivity extends AppCompatActivity {
             viewModelAdapter = new ViewModelAdapter(NaverActivity.this, R.layout.book_item, bookVOS, myListView);
             myListView.setAdapter(viewModelAdapter);
 
-
-
-            Log.i("MY", "" + bookVOS.size());
+            loading.setVisibility(View.GONE);
         }
     }
-    
-    
 }
