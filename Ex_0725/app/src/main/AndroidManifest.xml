@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.lece.ex_0725" >
+    package="com.lece.ex_0725">
     <!-- Samsung fingerprint permission, only required if you include the Spass module -->
     <uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
 
@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ex_0725"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".SweetAlertActivity"
+            android:exported="false" />
         <activity
             android:name=".FingerprintActivity"
             android:exported="false" />
@@ -22,8 +25,8 @@
             android:name=".NumberActivity"
             android:exported="false" />
         <activity
-            android:name=".SweetAlertActivity"
-            android:exported="true" >
+            android:name=".CalActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
