@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class DrawerActivity extends AppCompatActivity {
 
     DrawerLayout drawer_layout;
-    Button btn_open, btn_close;
+    Button btn_open, btn_close, btn_close2;
     LinearLayout drawer;
 
     @Override
@@ -23,10 +23,14 @@ public class DrawerActivity extends AppCompatActivity {
         drawer_layout = findViewById(R.id.drawer_layout);
         btn_open = findViewById(R.id.btn_open);
         btn_close = findViewById(R.id.btn_close);
+        btn_close2 = findViewById(R.id.btn_close2);
         drawer = findViewById(R.id.drawer);
 
         btn_open.setOnClickListener( listener );
         btn_close.setOnClickListener( listener );
+        btn_close2.setOnClickListener( listener );
+
+        drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
@@ -36,7 +40,7 @@ public class DrawerActivity extends AppCompatActivity {
                 case R.id.btn_open:
                     drawer_layout.openDrawer(drawer);
                     break;
-                case R.id.btn_close:
+                case R.id.btn_close: case R.id.btn_close2:
 //                        drawer_layout.closeDrawer(drawer);
                     drawer_layout.closeDrawers();
                     break;

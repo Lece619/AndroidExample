@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="서랍 닫기"
-            android:id="@id/btn_close" />
+            android:id="@+id/btn_close2" />
 
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
