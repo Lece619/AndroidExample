@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 휴대폰 안에 폴더를 생성하던지 파일을 생성하는 권한 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!--  -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +20,9 @@
         tools:targetApi="31">
         <activity
             android:name=".SqliteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AnimActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
